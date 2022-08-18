@@ -29,12 +29,17 @@ console.log('example task:', processFirstItem(['foo','bar'],function(str){return
   
   Study the code for counter1 and counter2, then answer the questions below.
   
-  1. What is the difference between counter1 and counter2?
+  1. What is the difference between counter1 and counter2? Counter1 is using closure to keep track
+  of memory for a count that increments whenever you call the function, while Counter2 keeps resetting
+  to 0 and then incrementing. 
   
-  2. Which of the two uses a closure? How can you tell?
+  2. Which of the two uses a closure? How can you tell? Counter1 is a closure since
+  there is a nested function that returns objects beyond the lexical scope. 
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
-     counter2 be better?  
+     counter2 be better?  Counter1 would be preferable if you want to keep track of score for a long
+     time and for multiple parties, while Counter2 would be better if you want something
+     that resets. 
 */
 
 // counter1 code
@@ -54,6 +59,8 @@ function counter2() {
   return count++;
 }
 
+// console.log(counter2());
+// console.log(count);
 
 /* ⚾️⚾️⚾️ Task 2: inning() ⚾️⚾️⚾️
 Use the inning function below to do the following:
@@ -64,9 +71,15 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+  const max = 2;
+  const min = 0; 
+  let randomNum = Math.floor(Math.random()*(max-min+1)+min);
+  return (randomNum);
 }
+
+inning();
+
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -83,9 +96,23 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*Code Here*/){
-  /*Code Here*/
+function finalScore(fun, innings ){
+  let homeScore = 0;
+  let awayScore = 0;
+  const totalScore = {};
+
+  for (let i = 0; i < innings; i++){
+    homeScore = homeScore + fun();
+    awayScore = homeScore + fun();
+  }
+  
+  totalScore.Home = homeScore;
+  totalScore.Away = awayScore;
+
+  return (totalScore);
 }
+
+finalScore(inning,9);
 
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
