@@ -60,7 +60,8 @@ You will be running your tests in one terminal and debugging in the other. As yo
 
 Edit the `ReadMe` file with your answers to the questions below.
 
-1. In your own words, define closure (1-2 sentences).
+1. In your own words, define closure (1-2 sentences). Closure is the phenonemon where a function
+is using variables that are defined outside of it. 
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -81,9 +82,12 @@ dansRoll();
 dansRoll();
 ```
 
-a. Where is closure used in this code? How can you tell?
-b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
-c. What is the lexical scope of `newRoll`? 
+a. Where is closure used in this code? How can you tell? Closure is used in the function personalDice
+since it is calling and returning another function within it. I can tell because there are nested
+functions that deal with lexical scopes. 
+b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change? The resulting console log string is always the same, but the dice roll value in that string could change. 
+c. What is the lexical scope of `newRoll`?  The lexical scope is the personalDice function
+and global variables/entire code, everything beyond it externally. 
 
 
 ### Task 3 - Stretch Goals

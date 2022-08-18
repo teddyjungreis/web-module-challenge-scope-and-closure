@@ -103,7 +103,7 @@ function finalScore(fun, innings ){
 
   for (let i = 0; i < innings; i++){
     homeScore = homeScore + fun();
-    awayScore = homeScore + fun();
+    awayScore = awayScore + fun();
   }
   
   totalScore.Home = homeScore;
@@ -128,10 +128,33 @@ For example: invoking getInningScore(inning) might return this object:
   */
 
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
-
+function getInningScore(fun) {
+  const totalScore = {};
+  totalScore.Home = fun();
+  totalScore.Away = fun();
+  return (totalScore);
 }
+
+getInningScore(inning);
+
+
+
+
+function personalDice(name){
+  return function(){
+      // generate random number between 1 and 6
+    const newRoll = Math.floor(Math.random() * 6);
+    console.log(`${name} rolled a ${newRoll}`)
+  }
+}
+
+const dansRoll = personalDice("Dan");
+
+const zoesRoll = personalDice("Zoe");
+
+
+dansRoll();
+dansRoll();
 
 
 /* STRETCH: ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
